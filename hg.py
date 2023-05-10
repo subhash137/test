@@ -1,3 +1,3 @@
-import spacy
+import nltk
 print("us")
 
