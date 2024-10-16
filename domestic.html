@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domestic Assistant Bot | RoboTech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --deep-blue: #0a192f;
+            --electric-blue: #64ffda;
+            --white: #ffffff;
+            --light-gray: #8892b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--deep-blue);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background-color: rgba(10, 25, 47, 0.8);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--electric-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--electric-blue);
+        }
+
+        .product-page {
+            padding: 120px 0 80px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .product-image {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-info h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--electric-blue);
+        }
+
+        .product-rating {
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            margin-bottom: 30px;
+        }
+
+        .technical-specs {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .technical-specs h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--electric-blue);
+        }
+
+        .technical-specs ul {
+            list-style-type: none;
+        }
+
+        .technical-specs li {
+            margin-bottom: 10px;
+        }
+
+        .reviews {
+            margin-top: 40px;
+        }
+
+        .reviews h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--electric-blue);
+        }
+
+        .review {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .review-rating {
+            color: #ffd700;
+        }
+
+        .other-products {
+            margin-top: 60px;
+        }
+
+        .other-products h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--electric-blue);
+        }
+
+        .product-grid-small {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card-small {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product-card-small img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--electric-blue);
+            color: var(--deep-blue);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">RoboTech</div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="product.html">Products</a></li>
+                        <li><a href="aboutUs.html">About</a></li>
+                        <li><a href="contactUs.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="product-page">
+            <div class="container">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="/assets/domestic.jpeg" alt="Domestic Assistant Bot">
+                    </div>
+                    <div class="product-info">
+                        <h1>Domestic Assistant Bot</h1>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.5/5)</span>
+                        </div>
+                        <div class="product-price">$999.99</div>
+                        <p class="product-description">The Domestic Assistant Bot is your perfect home companion for everyday tasks. This advanced robot combines cutting-edge AI with versatile functionality to make your life easier and more efficient. From cleaning and organizing to providing reminders and assistance with various household chores, the Domestic Assistant Bot is designed to seamlessly integrate into your daily routine.</p>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="technical-specs">
+                    <h2>Technical Specifications</h2>
+                    <ul>
+                        <li><strong>Dimensions:</strong> 20" x 20" x 36" (50.8 cm x 50.8 cm x 91.4 cm)</li>
+                        <li><strong>Weight:</strong> 35 lbs (15.9 kg)</li>
+                        <li><strong>Battery Life:</strong> Up to 8 hours of continuous operation</li>
+                        <li><strong>Charging Time:</strong> 2 hours for full charge</li>
+                        <li><strong>AI Processor:</strong> Quantum Neural Engine 3.0</li>
+                        <li><strong>Connectivity:</strong> Wi-Fi 6, Bluetooth 5.2, 5G</li>
+                        <li><strong>Voice Recognition:</strong> Multi-language support with 99.9% accuracy</li>
+                        <li><strong>Sensors:</strong> LiDAR, depth cameras, touch sensors, obstacle detection</li>
+                        <li><strong>Cleaning Capabilities:</strong> Vacuuming, mopping, surface sanitization</li>
+                        <li><strong>Smart Home Integration:</strong> Compatible with major smart home ecosystems</li>
+                    </ul>
+                </div>
+
+                <div class="reviews">
+                    <h2>Customer Reviews</h2>
+                    <div class="review">
+                        <div class="review-header">
+                            <strong>John D.</strong>
+                            <span class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <p>The Domestic Assistant Bot has been a game-changer for our household. It's incredibly efficient at cleaning and organizing, and the AI is so advanced that it learns our preferences quickly. Highly recommended!</p>
+                    </div>
+                    <div class="review">
+                        <div class="review-header">
+                            <strong>Sarah M.</strong>
+                            <span class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                        </div>
+                        <p>I'm impressed with how well the Domestic Assistant Bot handles various tasks. It's great for cleaning, but I especially love how it helps me stay organized with reminders and schedules. The only reason I'm not giving it 5 stars is that I wish the battery life was a bit longer.</p>
+                    </div>
+                </div>
+
+                <div class="other-products">
+                    <h2>Other Products You Might Like</h2>
+                    <div class="product-grid-small">
+                        <div class="product-card-small">
+                            <img src="/assets/industrial.jpg" alt="Industrial Powerarm">
+                            <h3>Industrial Powerarm</h3>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                        <div class="product-card-small">
+                            <img src="/assets/edu.jpeg" alt="EduBot 2000">
+                            <h3>EduBot 2000</h3>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                        <div class="product-card-small">
+                            <img src="/assets/robochef.jpeg" alt="RoboChef Culinary Assistant">
+                            <h3>RoboChef Culinary Assistant</h3>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

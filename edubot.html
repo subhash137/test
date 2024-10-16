@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduBot 2000 | RoboTech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --deep-blue: #0a192f;
+            --electric-blue: #64ffda;
+            --white: #ffffff;
+            --light-gray: #8892b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--deep-blue);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background-color: rgba(10, 25, 47, 0.8);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--electric-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--electric-blue);
+        }
+
+        .product-page {
+            padding: 120px 0 80px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .product-image {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-info h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--electric-blue);
+        }
+
+        .product-rating {
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            margin-bottom: 30px;
+        }
+
+        .technical-specs {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .technical-specs h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--electric-blue);
+        }
+
+        .technical-specs ul {
+            list-style-type: none;
+        }
+
+        .technical-specs li {
+            margin-bottom: 10px;
+        }
+
+        .reviews {
+            margin-top: 40px;
+        }
+
+        .reviews h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--electric-blue);
+        }
+
+        .review {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .review-rating {
+            color: #ffd700;
+        }
+
+        .other-products {
+            margin-top: 60px;
+        }
+
+        .other-products h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--electric-blue);
+        }
+
+        .product-grid-small {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card-small {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product-card-small img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--electric-blue);
+            color: var(--deep-blue);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">RoboTech</div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="product.html">Products</a></li>
+                        <li><a href="aboutUs.html">About</a></li>
+                        <li><a href="contactUs.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="product-page">
+            <div class="container">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <img src="/assets/edu.jpeg" alt="EduBot 2000">
+                    </div>
+                    <div class="product-info">
+                        <h1>EduBot 2000</h1>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.8/5)</span>
+                        </div>
+                        <div class="product-price">$799.99</div>
+                        <p class="product-description">The EduBot 2000 is the perfect learning companion for students and educators alike. With advanced AI, it assists with personalized tutoring, learning exercises, and classroom management. EduBot 2000 is designed to make education more interactive and engaging.</p>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="technical-specs">
+                    <h2>Technical Specifications</h2>
+                    <ul>
+                        <li><strong>Dimensions:</strong> 18" x 18" x 34" (45.7 cm x 45.7 cm x 86.4 cm)</li>
+                        <li><strong>Weight:</strong> 30 lbs (13.6 kg)</li>
+                        <li><strong>Battery Life:</strong> Up to 10 hours of continuous operation</li>
+                        <li><strong>Charging Time:</strong> 1.5 hours for full charge</li>
+                        <li><strong>AI Processor:</strong> Quantum Neural Engine 3.0</li>
+                        <li><strong>Connectivity:</strong> Wi-Fi 6, Bluetooth 5.2</li>
+                        <li><strong>Learning Modes:</strong> Tutoring, Group Learning, AI-based curriculum assistance</li>
+                        <li><strong>Sensors:</strong> LiDAR, depth cameras, motion detection</li>
+                        <li><strong>Smart Integration:</strong> Compatible with major EdTech platforms</li>
+                    </ul>
+                </div>
+
+                <div class="reviews">
+                    <h2>Customer Reviews</h2>
+                    <div class="review">
+                        <div class="review-header">
+                            <strong>Emily R.</strong>
+                            <span class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div
