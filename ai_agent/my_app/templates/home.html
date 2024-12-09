@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Dashboard - AI Supply Chain Agent{% endblock %}
+{% block extra_css %}
+
+<link href="{% static 'css/home.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="container">
+
+   
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 mb-4">AI-Powered Supply Chain Management</h1>
+            <p class="lead mb-5">Streamline your supply chain with intelligent document processing and analytics</p>
+            {% if not user.is_authenticated %}
+                <a href="{% url 'signup' %}" class="btn btn-light btn-lg me-3">Get Started</a>
+                <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg">Login</a>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 feature-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-file-invoice feature-icon"></i>
+                            <h3 class="card-title">Document Reader</h3>
+                            <p class="card-text">
+                                AI-powered document analysis for invoices and sales documents. 
+                                Ask questions and get intelligent insights instantly.
+                            </p>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'document_reader' %}" class="btn btn-primary">Analyze Documents</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 feature-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-receipt feature-icon"></i>
+                            <h3 class="card-title">Receipt Parser</h3>
+                            <p class="card-text">
+                                Upload receipt images for automated parsing. 
+                                Extract key information and save it directly to your database.
+                            </p>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'receipt_parser' %}" class="btn btn-primary">Parse Receipts</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 feature-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-chart-line feature-icon"></i>
+                            <h3 class="card-title">Interactive Dashboard</h3>
+                            <p class="card-text">
+                                Real-time visualizations of your supply chain metrics. 
+                                Track production, orders, and inventory at a glance.
+                            </p>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'dashboard' %}" class="btn btn-primary">View Dashboard</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ai-supply-chain-insights py-5 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">Transforming Supply Chain with AI</h2>
+                    <p class="lead text-muted">Intelligent Solutions to Complex Challenges</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="ai-insight-card">
+                        <div class="ai-insight-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3>Predictive Inventory Management</h3>
+                        <p>AI algorithms analyze historical data, market trends, and external factors to forecast inventory needs with unprecedented accuracy. Reduce stockouts and overstock situations by up to 50%.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="ai-insight-card">
+                        <div class="ai-insight-icon">
+                            <i class="fas fa-truck-moving"></i>
+                        </div>
+                        <h3>Optimized Logistics Routing</h3>
+                        <p>Machine learning models continuously optimize delivery routes, considering real-time traffic, weather conditions, and cost-effectiveness. Potential reduction in transportation costs: 15-20%.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row g-4 mt-4">
+                <div class="col-12">
+                    <div class="ai-challenge-solution">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h3 class="mb-4">Supply Chain Challenges vs AI Solutions</h3>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Challenge</th>
+                                            <th>AI-Powered Solution</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Demand Unpredictability</td>
+                                            <td>Advanced Forecasting Algorithms</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Inventory Mismanagement</td>
+                                            <td>Real-time Inventory Optimization</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Inefficient Routing</td>
+                                            <td>Dynamic Route Planning</td>
+                                        </tr>
+                                        <tr>
+                                            <td>High Operational Costs</td>
+                                            <td>Cost Reduction through AI Insights</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="ai-impact-visual">
+                                    <div class="impact-stat">
+                                        <h4>25%</h4>
+                                        <p>Reduction in Operational Costs</p>
+                                    </div>
+                                    <div class="impact-stat">
+                                        <h4>40%</h4>
+                                        <p>Improved Inventory Accuracy</p>
+                                    </div>
+                                    <div class="impact-stat">
+                                        <h4>60%</h4>
+                                        <p>Faster Decision Making</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</div>
+
+{% endblock %}

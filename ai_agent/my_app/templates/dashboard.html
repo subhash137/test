@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - AI Supply Chain Agent{% endblock %}
+
+{% block content %}
+
+
+<div class="container-fluid mt-5">
+        <h1 class="text-center mb-4">Supply Chain Data Overview</h1>
+        
+        <div class="row">
+            <!-- First Visualization -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="card-title">Units Produced Per Laptop Model</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="unitsProducedChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Visualization -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="card-title">Orders Status Distribution</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="orderStatusChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Visualization -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="card-title">Inventory Distribution Across Warehouses</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="inventoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Orders</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Laptop Model</th>
+                                        <th>Quantity</th>
+                                        <th>Order Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in recent_orders %}
+                                    <tr>
+                                        <td>{{ order.id }}</td>
+                                        <td>{{ order.laptop.model_name }}</td>
+                                        <td>{{ order.quantity }}</td>
+                                        <td>{{ order.order_date|date:"Y-m-d" }}</td>
+                                        <td>
+                                            <span class="badge 
+                                                {% if order.status == 'DELIVERED' %}bg-success
+                                                {% elif order.status == 'PENDING' %}bg-warning
+                                                {% elif order.status == 'PROCESSING' %}bg-info
+                                                {% elif order.status == 'SHIPPED' %}bg-primary
+                                                {% else %}bg-secondary{% endif %}">
+                                                {{ order.status }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced Chart Creation with More Options
+        function createChart(elementId, type, labels, values, backgroundColor, title) {
+            return new Chart(document.getElementById(elementId), {
+                type: type,
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: title,
+                        data: values,
+                        backgroundColor: backgroundColor,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: title
+                        },
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+        }
+
+        // Units Produced Chart
+        const unitsProducedData = JSON.parse('{{ units_produced_data|safe }}');
+        createChart(
+            'unitsProducedChart', 
+            'bar', 
+            unitsProducedData.labels, 
+            unitsProducedData.values, 
+            'rgba(54, 162, 235, 0.6)',
+            'Units Produced per Laptop Model'
+        );
+
+        // Order Status Chart
+        const orderStatusData = JSON.parse('{{ order_status_data|safe }}');
+        createChart(
+            'orderStatusChart', 
+            'pie', 
+            orderStatusData.labels, 
+            orderStatusData.values, 
+            [
+                'rgba(75, 192, 192, 0.6)', 
+                'rgba(255, 159, 64, 0.6)', 
+                'rgba(153, 102, 255, 0.6)', 
+                'rgba(255, 99, 132, 0.6)'
+            ],
+            'Order Status Distribution'
+        );
+
+        // Inventory Chart
+        const inventoryData = JSON.parse('{{ inventory_data|safe }}');
+        createChart(
+            'inventoryChart', 
+            'doughnut', 
+            inventoryData.labels, 
+            inventoryData.values, 
+            [
+                'rgba(255, 205, 86, 0.6)', 
+                'rgba(54, 162, 235, 0.6)', 
+                'rgba(255, 99, 132, 0.6)'
+            ],
+            'Inventory Distribution'
+        );
+    </script>
+{% endblock %}

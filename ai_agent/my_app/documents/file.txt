@@ -1,0 +1,115 @@
+### Document 1: Pro Forma Invoice
+Seller Details:
+Name: Global Tech Suppliers
+Address: 123 Tech Drive, Silicon City, CA 94000, USA
+Contact: +1 (555) 123-4567
+Email: sales@globaltechsuppliers.com
+
+Buyer Details:
+Name: Tech Innovators Pvt. Ltd.
+Address: 89 Innovation Park, Bangalore, India
+Contact: +91 98765 43210
+Email: purchase@techinnovators.in
+
+Invoice No: PI2024-001
+Date: 2024-11-18
+Terms of Payment: 50% advance, 50% on delivery
+Delivery Terms: FOB (Free On Board)
+
+| Description      | Quantity | Unit Price (USD) | Total (USD) |
+|-----------------------|--------------|-----------------------|-----------------|
+| Laptops Model X100   | 100          | $800                 | $80,000         |
+| Accessories Bundle    | 100          | $50                  | $5,000          |
+
+Total: $85,000
+Notes: Payment via wire transfer. Shipment expected in 3 weeks.
+
+---
+
+### Document 2: Packing List
+Shipper: Global Tech Suppliers
+Consignee: Tech Innovators Pvt. Ltd.
+
+| Item No | Description      | Quantity | Weight (kg) | Dimensions (cm) |
+|-------------|-----------------------|--------------|------------------|----------------------|
+| 1           | Laptops Model X100   | 100          | 150              | 40 x 30 x 5 (per unit) |
+| 2           | Accessories Bundle    | 100          | 50               | 20 x 15 x 10 (per unit) |
+
+Total Weight: 200 kg
+Number of Packages: 10
+Shipping Marks:
+- Marking: Tech Innovators Pvt. Ltd.
+- Fragile
+- Handle with Care
+
+---
+
+### Document 3: Commercial Invoice
+Seller Details: Global Tech Suppliers
+Buyer Details: Tech Innovators Pvt. Ltd.
+
+| Item             | Description      | HS Code | Quantity | Unit Price (USD) | Total (USD) |
+|----------------------|-----------------------|-------------|--------------|-----------------------|-----------------|
+| Laptops              | Model X100           | 8471.30     | 100          | $800                 | $80,000         |
+| Accessories          | Laptop Accessories   | 8473.30     | 100          | $50                  | $5,000          |
+
+Total Invoice Value: $85,000
+Country of Origin: USA
+Date of Export: 2024-12-01
+
+---
+
+### Document 4: Air Waybill (AWB)
+Carrier: FastTrack Airways
+AWB No: 1234567890
+Shipper: Global Tech Suppliers
+Consignee: Tech Innovators Pvt. Ltd.
+
+Flight Details:
+- Flight No: FT123
+- Departure Date: 2024-12-02
+- Destination: Bangalore, India
+
+Contents:
+- 100 laptops
+- Accessories (as described in Packing List)
+
+Weight: 200 kg
+Handling Instructions: Fragile. Handle with Care.
+
+---
+
+### Document 5: Bill of Lading (BOL)
+Shipper: Global Tech Suppliers
+Consignee: Tech Innovators Pvt. Ltd.
+
+| BOL Number       | BOL2024-45678 |
+|-----------------------|---------------|
+| Carrier           | FastTrack Airways |
+| Vessel Name       | CargoTech 1 |
+| Departure Port    | San Francisco |
+| Arrival Port      | Bangalore |
+
+Description of Goods:
+- 100 laptops (Model X100)
+- 100 accessories bundles
+
+---
+
+### Additional Documents (For Reference):
+
+1. Certificate of Authenticity
+    - Certifies that laptops are genuine and sourced from the manufacturer.
+    - Issued by Global Tech Suppliers.
+
+2. Insurance Certificate
+    - Covers goods during transit.
+    - Policy No: INS2024-98765
+
+3. Certificate of Origin
+    - Certifies laptops are made in the USA.
+    - Issued by Silicon Valley Chamber of Commerce.
+
+4. Export License
+    - License No: EX-TECH-2024-11234
+    - Valid till 2025.

@@ -1,0 +1,137 @@
+<!-- templates/chat/chat.html -->
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Dashboard - AI Supply Chain Agent{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/chat.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="chat-wrapper">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h1 class="h4 mb-0">RAG Chatbot</h1>
+                <p class="small mb-0">Ask questions about the documents in the knowledge base</p>
+            </div>
+            
+            <div class="card-body p-0">
+                <div class="message-container" id="message-container">
+                    {% for message in messages %}
+                        <div class="message-row {% if message.sender == 'USER' %}user-message-row{% else %}bot-message-row{% endif %}">
+                            <div class="message {% if message.sender == 'USER' %}user-message{% else %}bot-message{% endif %}">
+                                {{ message.message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+                    <div class="typing-indicator d-none">
+                        <div class="dots">
+                            <span>●</span>
+                            <span>●</span>
+                            <span>●</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <form id="chat-form" class="d-flex">
+                    <input 
+                        type="text" 
+                        id="user-input"
+                        class="form-control me-2" 
+                        placeholder="Type your message..."
+                        required
+                    >
+                    <button 
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Send
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock %}
+
+    {% block extra_js %}
+    <script>
+        const chatForm = document.getElementById('chat-form');
+        const userInput = document.getElementById('user-input');
+        const messageContainer = document.querySelector('.message-container');
+        const typingIndicator = document.querySelector('.typing-indicator');
+        
+        function scrollToBottom() {
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+        
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex ${isUser ? 'justify-end' : ''}`;
+            messageDiv.innerHTML = `
+                <div class="message ${isUser ? 'user-message' : 'bot-message'}">
+                    ${message}
+                </div>
+            `;
+            messageContainer.insertBefore(messageDiv, typingIndicator);
+            scrollToBottom();
+        }
+        
+        function showTypingIndicator() {
+            typingIndicator.style.display = 'block';
+            scrollToBottom();
+        }
+        
+        function hideTypingIndicator() {
+            typingIndicator.style.display = 'none';
+        }
+        
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const message = userInput.value.trim();
+            if (!message) return;
+            
+            // Add user message
+            addMessage(message, true);
+            userInput.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            try {
+                const response = await fetch('message/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message })
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    // Hide typing indicator and add bot response
+                    hideTypingIndicator();
+                    addMessage(data.message);
+                } else {
+                    throw new Error(data.message);
+                }
+            } catch (error) {
+                hideTypingIndicator();
+                addMessage(`Error: ${error.message}`, false);
+            }
+        });
+        
+        // Initial scroll to bottom
+        scrollToBottom();
+</script>
+{% endblock %}

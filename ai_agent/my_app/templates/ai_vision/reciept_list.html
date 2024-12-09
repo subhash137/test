@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receipt List</title>
+    <style>
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .receipt-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .items-list {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Analyzed Receipts</h1>
+        
+        {% for receipt in receipts %}
+        <div class="receipt-card">
+            <h2>{{ receipt.merchant_name }}</h2>
+            <p>Date: {{ receipt.date }}</p>
+            <p>Document Number: {{ receipt.document_number }}</p>
+            <p>Total: ${{ receipt.total }}</p>
+            
+            <h3>Items:</h3>
+            <div class="items-list">
+                {% for item in receipt.items.all %}
+                <p>{{ item.name }} - Qty: {{ item.quantity }} - ${{ item.total_price }}</p>
+                {% endfor %}
+            </div>
+            
+            <p>Payment Method: {{ receipt.payment_method }}</p>
+            <p>Status: {{ receipt.payment_status }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="card shadow-lg" style="min-width: 400px;">
+        <div class="card-body p-5">
+            <h1 class="text-center mb-4">Sign Up</h1>
+            
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" required>
+                    {% if form.username.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.username.errors|join:", " }}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password1" class="form-control" required>
+                    {% if form.password1.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.password1.errors|join:", " }}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" name="password2" class="form-control" required>
+                    {% if form.password2.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.password2.errors|join:", " }}
+                    </div>
+                    {% endif %}
+                </div>
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors|join:", " }}
+                </div>
+                {% endif %}
+                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+            </form>
+            
+            <div class="text-center mt-3">
+                <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header {% if message.tags %}bg-{{ message.tags }}{% endif %}">
+                <strong class="me-auto text-white">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

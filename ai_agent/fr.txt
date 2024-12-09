@@ -1,0 +1,38 @@
+{
+  "merchant_name": null,
+  "date": "2018-10-09",
+  "document_number": null,
+  "total_items": 4,
+  "items": [
+    {
+      "name": "T-Shirt",
+      "quantity": 1,
+      "unit_price": 21.9,
+      "total_price": 21.9
+    },
+    {
+      "name": "T-Shirt",
+      "quantity": 1,
+      "unit_price": 12.99,
+      "total_price": 12.99
+    },
+    {
+      "name": "Pants",
+      "quantity": 1,
+      "unit_price": 35.99,
+      "total_price": 35.99
+    },
+    {
+      "name": "Socks",
+      "quantity": 1,
+      "unit_price": 4.0,
+      "total_price": 4.0
+    }
+  ],
+  "subtotal": 74.88,
+  "tax": null,
+  "total": 74.88,
+  "additional_charges": [],
+  "payment_method": "Cash",
+  "payment_status": "Paid"
+}

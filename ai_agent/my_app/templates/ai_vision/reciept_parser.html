@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Dashboard - AI Supply Chain Agent{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/receiptparser.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Receipt Analyzer</h1>
+        
+        <div class="upload-form">
+            <form id="receiptForm">
+                <input type="file" name="receipt_image" accept="image/*" required>
+                <button type="submit">Analyze Receipt</button>
+            </form>
+        </div>
+        
+        <div class="loading">
+            <p>Analyzing receipt... Please wait...</p>
+        </div>
+        
+        <div class="result" id="result">
+            <h2>Analysis Result</h2>
+            <pre id="resultJson"></pre>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('receiptForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            document.querySelector('.loading').style.display = 'block';
+            document.querySelector('.result').style.display = 'none';
+            
+            try {
+                const response = await fetch('/receipt-parser/', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    document.getElementById('resultJson').textContent = 
+                        JSON.stringify(data.data, null, 2);
+                    document.querySelector('.result').style.display = 'block';
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            } catch (error) {
+                alert('Error uploading receipt: ' + error.message);
+            } finally {
+                document.querySelector('.loading').style.display = 'none';
+            }
+        });
+    </script>
+{% endblock %}
